@@ -1,0 +1,15 @@
+{
+  "name": "yd-ai-monorepo",
+  "version": "0.0.0",
+  "private": true,
+  "packageManager": "pnpm@10.12.4",
+  "scripts": {
+    "build": "pnpm -r --workspace-concurrency=1 build",
+    "dev": "pnpm --filter yd-app dev"
+  },
+  "devDependencies": {
+    "@rollup/plugin-typescript": "^11.1.5",
+    "rollup": "^3.29.4",
+    "typescript": "^5.3.3"
+  }
+}
