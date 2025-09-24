@@ -1,0 +1,18 @@
+{
+  "name": "yd-ai-monorepo",
+  "version": "0.0.0",
+  "private": true,
+  "packageManager": "pnpm@10.12.4",
+  "scripts": {
+    "build": "pnpm build:packages && pnpm build:app",
+    "build:packages": "pnpm --filter \"@yd/*\" run build",
+    "build:app": "pnpm --filter yd-app run build",
+    "dev": "pnpm --filter yd-app dev"
+  },
+  "devDependencies": {
+    "@rollup/plugin-typescript": "^11.1.5",
+    "rollup": "^3.29.4",
+    "tslib": "^2.8.1",
+    "typescript": "^5.3.3"
+  }
+}
