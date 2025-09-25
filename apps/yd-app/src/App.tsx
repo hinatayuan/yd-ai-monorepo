@@ -2,156 +2,131 @@ import { useMemo, useState } from 'react';
 import { formatWalletAddress, generateMockAddress } from '@yd/libs';
 import { useWallet } from '@yd/hooks';
 
-const NETWORKS: Record<number, string> = {
-  1: '以太坊主网',
-  56: 'BNB Chain',
-  137: 'Polygon PoS',
-  8453: 'Base',
-};
+const NETWORK_OPTIONS = [
+  { id: 1, name: 'Ethereum Mainnet' },
+  { id: 56, name: 'BNB Chain' },
+  { id: 137, name: 'Polygon' },
+  { id: 59144, name: 'Linea' },
+];
 
-export function App(): JSX.Element {
-  const [previewAddress, setPreviewAddress] = useState(generateMockAddress());
-  const [chainInput, setChainInput] = useState('1');
+export default function App(): JSX.Element {
+  const [customAddress, setCustomAddress] = useState('');
+  const [selectedChain, setSelectedChain] = useState<number>(NETWORK_OPTIONS[0].id);
+
+  const networkMap = useMemo(() => {
+    return NETWORK_OPTIONS.reduce<Record<number, string>>((acc, item) => {
+      acc[item.id] = item.name;
+      return acc;
+    }, {});
+  }, []);
 
   const wallet = useWallet({
-    initialChainId: 1,
-    networkNames: NETWORKS,
+    initialChainId: NETWORK_OPTIONS[0].id,
+    networkNames: networkMap,
+    latency: 400,
+    historyLimit: 15,
   });
 
-  const previewFormatted = useMemo(
-    () =>
-      formatWalletAddress(previewAddress, {
-        filler: '•••',
-        placeholder: '请输入地址以预览效果',
-      }),
-    [previewAddress],
-  );
-
-  const connectionLabel = wallet.state.status === 'connected'
-    ? '已连接'
-    : wallet.state.status === 'connecting'
-      ? '连接中'
-      : '未连接';
-
-  const connectionTone = wallet.state.status === 'connected'
-    ? '#34d399'
-    : wallet.state.status === 'connecting'
-      ? '#fbbf24'
-      : '#f87171';
+  const handleConnect = (): void => {
+    if (customAddress.trim()) {
+      wallet.connect(customAddress.trim());
+    } else {
+      wallet.connect(generateMockAddress());
+    }
+  };
 
   return (
-    <div className="card">
+    <div className="app">
       <header>
-        <h1>YD 钱包演示</h1>
-        <p className="helper">演示 @yd/libs 与 @yd/hooks 中封装的钱包地址格式化与连接流程。</p>
+        <h1>YD 钱包工具演示</h1>
+        <p>通过 pnpm 工作空间共享 @yd/libs 与 @yd/hooks，使用 Rollup 编译库代码。</p>
       </header>
 
-      <section className="status">
-        <span>连接状态</span>
-        <strong style={{ color: connectionTone }}>{connectionLabel}</strong>
+      <main>
+        <section className="panel wallet-status">
+          <h2>连接状态</h2>
+          <span className="badge">
+            {wallet.isConnecting ? '连接中' : wallet.isConnected ? '已连接' : '未连接'}
+          </span>
+          <div>
+            <strong>当前地址：</strong> {wallet.formattedAddress}
+          </div>
+          <div>
+            <strong>原始地址：</strong>{' '}
+            {wallet.state.address ?? '—'}
+          </div>
+          <div>
+            <strong>网络：</strong> {wallet.state.networkName ?? '—'}
+          </div>
+          <div>
+            <strong>格式化工具：</strong> {formatWalletAddress(wallet.state.address)}
+          </div>
+        </section>
 
-        <span>当前地址</span>
-        <strong>{wallet.formattedAddress}</strong>
+        <section className="panel">
+          <h2>操作钱包</h2>
+          <div className="actions">
+            <input
+              placeholder="自定义地址（可选）"
+              value={customAddress}
+              onChange={(event) => setCustomAddress(event.target.value)}
+            />
+            <button type="button" onClick={handleConnect} disabled={wallet.isConnecting}>
+              {wallet.isConnected ? '重新连接' : '连接钱包'}
+            </button>
+            <button type="button" onClick={wallet.disconnect} disabled={!wallet.isConnected}>
+              断开连接
+            </button>
+          </div>
 
-        <span>当前网络</span>
-        <strong>
-          {wallet.state.chainId == null
-            ? '未选择'
-            : `${wallet.state.networkName ?? '未知网络'} (#${wallet.state.chainId})`}
-        </strong>
+          <div className="actions">
+            <select
+              value={selectedChain}
+              onChange={(event) => setSelectedChain(Number(event.target.value))}
+            >
+              {NETWORK_OPTIONS.map((item) => (
+                <option key={item.id} value={item.id}>
+                  {item.name}
+                </option>
+              ))}
+            </select>
+            <button type="button" onClick={() => wallet.switchChain(selectedChain)}>
+              切换至所选网络
+            </button>
+          </div>
 
-        <span>历史事件</span>
-        <strong>{wallet.state.history.length} 条</strong>
-      </section>
+          <div className="actions">
+            <button type="button" onClick={() => wallet.updateAddress(generateMockAddress())}>
+              生成随机地址
+            </button>
+            <button type="button" onClick={wallet.clearHistory}>
+              清空历史
+            </button>
+          </div>
+        </section>
 
-      <section className="actions">
-        <button onClick={() => wallet.connect(previewAddress)} disabled={wallet.isConnected || wallet.isConnecting}>
-          模拟连接
-        </button>
-        <button
-          className="secondary"
-          onClick={() => wallet.disconnect()}
-          disabled={!wallet.isConnected && !wallet.isConnecting}
-        >
-          断开连接
-        </button>
-        <button
-          className="secondary"
-          onClick={() => wallet.updateAddress(previewAddress)}
-          disabled={!wallet.isConnected}
-        >
-          同步地址
-        </button>
-        <button className="secondary" onClick={() => wallet.clearHistory()} disabled={wallet.state.history.length === 0}>
-          清空历史
-        </button>
-      </section>
+        <section className="panel">
+          <h2>事件日志</h2>
+          <div className="history">
+            {wallet.state.history.length === 0 ? (
+              <p className="empty">暂无事件</p>
+            ) : (
+              wallet.state.history.map((event) => (
+                <article key={event.id} className="history-item">
+                  <div>{event.summary}</div>
+                  <time dateTime={new Date(event.timestamp).toISOString()}>
+                    {new Date(event.timestamp).toLocaleString()}
+                  </time>
+                </article>
+              ))
+            )}
+          </div>
+        </section>
+      </main>
 
-      <section>
-        <label className="helper" htmlFor="chain-input">
-          切换网络（输入链 ID）：
-        </label>
-        <div className="actions" style={{ gap: '8px' }}>
-          <input
-            id="chain-input"
-            value={chainInput}
-            onInput={(event: Event) => setChainInput((event.target as HTMLInputElement).value)}
-            placeholder="例如 1、56、137"
-          />
-          <button
-            className="secondary"
-            onClick={() => {
-              const id = Number(chainInput);
-              if (Number.isFinite(id)) {
-                wallet.switchChain(id);
-              }
-            }}
-          >
-            切换网络
-          </button>
-        </div>
-      </section>
-
-      <section>
-        <label className="helper" htmlFor="address-input">
-          输入任意地址体验格式化：
-        </label>
-        <input
-          id="address-input"
-          value={previewAddress}
-          onInput={(event: Event) => setPreviewAddress((event.target as HTMLInputElement).value)}
-          placeholder="0x 开头的钱包地址"
-        />
-        <p className="helper">格式化结果：{previewFormatted}</p>
-      </section>
-
-      <section>
-        <h2 style={{ margin: '0 0 12px', fontSize: '18px' }}>最近事件</h2>
-        {wallet.state.history.length === 0 ? (
-          <p className="helper">暂无事件，可尝试连接钱包或切换网络。</p>
-        ) : (
-          <ul style={{ listStyle: 'none', margin: 0, padding: 0, display: 'flex', flexDirection: 'column', gap: '12px' }}>
-            {wallet.state.history.map((event) => (
-              <li
-                key={event.id}
-                style={{
-                  background: 'rgba(59, 130, 246, 0.12)',
-                  padding: '12px 16px',
-                  borderRadius: '12px',
-                  display: 'flex',
-                  flexDirection: 'column',
-                  gap: '4px',
-                }}
-              >
-                <span style={{ fontSize: '14px', color: '#cbd5f5' }}>{event.summary}</span>
-                <span style={{ fontSize: '12px', color: '#9ca3af' }}>
-                  {new Date(event.timestamp).toLocaleString()}
-                </span>
-              </li>
-            ))}
-          </ul>
-        )}
-      </section>
+      <footer className="footer-note">
+        在没有真实钱包环境的情况下，通过 useWallet 模拟连接、切链与地址更新流程。
+      </footer>
     </div>
   );
 }

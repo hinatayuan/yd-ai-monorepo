@@ -1,7 +1,6 @@
 import { useCallback, useState } from 'react';
 
 export type ImmerRecipe<S> = (draft: S) => void | S;
-
 export type ImmerUpdater<S> = (recipe: ImmerRecipe<S>) => void;
 
 export function useImmer<S>(initialValue: S | (() => S)): [S, ImmerUpdater<S>] {
@@ -9,7 +8,7 @@ export function useImmer<S>(initialValue: S | (() => S)): [S, ImmerUpdater<S>] {
 
   const update = useCallback<ImmerUpdater<S>>(
     (recipe) => {
-      setState((current) => {
+      setState((current: S) => {
         const draft = clone(current);
         const result = recipe(draft);
         return (result === undefined ? draft : result) as S;

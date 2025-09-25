@@ -3,23 +3,20 @@
     "target": "ES2020",
     "module": "ESNext",
     "moduleResolution": "Bundler",
+    "jsx": "react-jsx",
+    "jsxImportSource": "react",
     "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
     "strict": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
     "resolveJsonModule": true,
-    "jsx": "react-jsx",
-    "jsxImportSource": "react",
-    "allowSyntheticDefaultImports": true,
-    "typeRoots": ["./types", "./node_modules/@types"],
     "baseUrl": ".",
     "paths": {
-      "@yd/libs": ["packages/yd-libs/dist/types/index"],
-      "@yd/hooks": ["packages/yd-hooks/dist/types/index"],
-      "react": ["packages/react/dist/types/index"],
-      "react/jsx-runtime": ["packages/react/dist/types/jsx-runtime"],
-      "react-dom": ["packages/react-dom/dist/types/index"],
-      "react-dom/client": ["packages/react-dom/dist/types/client"]
+      "@yd/libs": ["packages/yd-libs/src/index.ts"],
+      "@yd/libs/*": ["packages/yd-libs/src/*"],
+      "@yd/hooks": ["packages/yd-hooks/src/index.ts"],
+      "@yd/hooks/*": ["packages/yd-hooks/src/*"]
     }
   }
 }

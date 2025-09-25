@@ -1,12 +1,11 @@
 {
   "name": "yd-ai-monorepo",
-  "version": "0.1.0",
   "private": true,
   "packageManager": "pnpm@9.12.1",
   "scripts": {
-    "build": "npm run build:packages && npm run build:app",
-    "build:packages": "node scripts/build-packages.mjs",
-    "build:app": "node scripts/build-app.mjs",
-    "dev": "node scripts/dev-server.mjs"
+    "build": "pnpm -r run build",
+    "build:packages": "pnpm -r --filter './packages/*' run build",
+    "build:app": "pnpm --filter yd-app run build",
+    "dev": "pnpm --filter yd-app run dev"
   }
 }

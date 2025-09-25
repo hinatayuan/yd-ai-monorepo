@@ -1,31 +1,30 @@
 # YD Monorepo
 
-本仓库使用 pnpm 工作区管理多包结构，内置了轻量的 React/ReactDOM 实现，便于在受限网络环境下演示钱包相关的工具方法与 hooks。
+基于 pnpm 工作区构建的钱包演示项目，包含以下三个工作空间：
 
-## 目录说明
+- `@yd/libs`：提供格式化钱包地址、验证十六进制地址等纯函数工具，使用 Rollup + TypeScript 输出 ESM/CJS 以及类型声明。
+- `@yd/hooks`：封装 `useImmer` 风格的状态更新与模拟钱包连接/断开/切链流程的 `useWallet` Hook，依赖 `@yd/libs`。
+- `yd-app`：Vite + React 演示应用，演示如何在组件中消费上述工具函数与 Hook。
 
-- `packages/react`、`packages/react-dom`：离线环境可用的极简 React 渲染与 DOM 绑定实现，兼容常用 hooks API 与 JSX 运行时。
-- `packages/yd-libs`：公共工具库，目前包含钱包地址格式化等实用函数。
-- `packages/yd-hooks`：基于 `useImmer` 状态管理封装的钱包交互 hooks，模拟连接、断开与链切换等流程。
-- `apps/yd-app`：演示应用，使用上述包渲染钱包状态面板与交互控件。
-- `scripts`：构建工作流与本地静态服务器脚本。
+## 快速开始
 
-## 常用指令
-
-> 由于运行环境无法访问 npm registry，本仓库的依赖均为工作区内自带实现，无需额外安装。
+> 当前执行环境无法访问 npm registry，首次运行请在支持外网的机器上执行 `pnpm install` 并将生成的 `node_modules` 复制到此环境；或者使用私有镜像源。
 
 ```bash
-# 构建所有包（ESM + CJS + 类型声明）
-npm run build:packages
+# 安装依赖
+pnpm install
 
-# 构建演示应用静态资源
-npm run build:app
+# 构建两个库包（Rollup）
+pnpm build:packages
 
-# 一键构建全部内容
-npm run build
+# 构建 React 演示应用
+pnpm build:app
 
-# 启动本地静态服务器（默认端口 4173）
-npm run dev
+# 或者一次性构建所有工作空间
+pnpm build
+
+# 运行演示应用（默认 http://localhost:5173）
+pnpm dev
 ```
 
-执行 `npm run dev` 会自动服务 `apps/yd-app/dist` 目录，可通过浏览器访问 `http://localhost:4173` 预览页面。
+构建后，可在 `packages/*/dist` 查看打包产物，在 `apps/yd-app` 目录中进行页面开发调试。
