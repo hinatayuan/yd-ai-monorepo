@@ -1,52 +1,72 @@
 export interface FormatWalletAddressOptions {
   /**
-   * Number of characters to keep at the start of the address.
-   * Defaults to 6, which includes the `0x` prefix and four characters after it.
+   * 保留地址前缀的字符数量，默认 6 位（含 0x）。
    */
   prefixLength?: number;
   /**
-   * Number of characters to keep at the end of the address.
-   * Defaults to 4.
+   * 保留地址末尾的字符数量，默认 4 位。
    */
   suffixLength?: number;
   /**
-   * Placeholder used when the address is missing or invalid.
+   * 用于分隔前缀与后缀的填充字符串，默认使用省略号。
+   */
+  filler?: string;
+  /**
+   * 当地址为空时返回的占位文案，默认为 `未连接`。
    */
   placeholder?: string;
+  /**
+   * 是否将结果统一转换为大写形式。
+   */
+  uppercase?: boolean;
 }
 
-const DEFAULT_PREFIX_LENGTH = 6;
-const DEFAULT_SUFFIX_LENGTH = 4;
-const ADDRESS_PATTERN = /^0x[a-fA-F0-9]{4,}$/;
+const HEX_ADDRESS_PATTERN = /^0x[a-fA-F0-9]{40}$/;
 
-/**
- * Format a wallet address for display by keeping characters at the beginning and end.
- *
- * @example
- * ```ts
- * formatWalletAddress('0x1234567890abcdef'); // → "0x1234...cdef"
- * ```
- */
-export function formatWalletAddress(
-  address: string | undefined | null,
-  options: FormatWalletAddressOptions = {}
-): string {
-  const { prefixLength = DEFAULT_PREFIX_LENGTH, suffixLength = DEFAULT_SUFFIX_LENGTH, placeholder = 'N/A' } = options;
+export function formatWalletAddress(address: string | null | undefined, options: FormatWalletAddressOptions = {}): string {
+  const {
+    prefixLength = 6,
+    suffixLength = 4,
+    filler = '···',
+    placeholder = '未连接',
+    uppercase = false,
+  } = options;
 
-  if (!address || typeof address !== 'string') {
+  if (!address) {
     return placeholder;
   }
 
-  const trimmed = address.trim();
-  if (!ADDRESS_PATTERN.test(trimmed) || trimmed.length <= prefixLength + suffixLength) {
-    return trimmed || placeholder;
+  const normalized = address.trim();
+  if (!normalized) {
+    return placeholder;
   }
 
-  const prefix = trimmed.slice(0, prefixLength);
-  const suffix = trimmed.slice(-suffixLength);
-  return `${prefix}...${suffix}`;
+  if (normalized.length <= prefixLength + suffixLength) {
+    return uppercase ? normalized.toUpperCase() : normalized;
+  }
+
+  const prefix = normalized.slice(0, prefixLength);
+  const suffix = normalized.slice(-suffixLength);
+  const result = `${prefix}${filler}${suffix}`;
+  return uppercase ? result.toUpperCase() : result;
 }
 
-export const walletUtils = {
-  formatWalletAddress
-};
+export function isHexAddress(input: string | null | undefined): boolean {
+  if (!input) {
+    return false;
+  }
+  return HEX_ADDRESS_PATTERN.test(input.trim());
+}
+
+export function generateMockAddress(seed = Date.now()): string {
+  let value = Math.abs(Number(seed) || Date.now());
+  let hex = '';
+
+  for (let index = 0; index < 40; index += 1) {
+    value = (value * 9301 + 49297) % 233280;
+    const digit = Math.floor((value / 233280) * 16);
+    hex += digit.toString(16);
+  }
+
+  return `0x${hex}`;
+}

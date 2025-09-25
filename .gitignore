@@ -1,8 +1,7 @@
-node_modules
-.DS_Store
-dist
+node_modules/
+apps/**/dist/
+packages/**/dist/
 *.log
-.vscode
-.idea
-.next
-coverage
+.DS_Store
+.idea/
+.vscode/
