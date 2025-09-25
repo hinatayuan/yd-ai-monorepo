@@ -1,0 +1,20 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "outDir": "dist",
+    "declaration": true,
+    "declarationDir": "dist",
+    "emitDeclarationOnly": false,
+    "rootDir": "src",
+    "types": ["react"],
+    "paths": {
+      "@yd/libs": ["../yd-libs/src/index.ts"],
+      "@yd/hooks": ["./src/index.ts"]
+    },
+    "composite": true
+  },
+  "include": ["src/**/*"],
+  "references": [
+    { "path": "../yd-libs" }
+  ]
+}

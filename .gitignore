@@ -1,0 +1,9 @@
+node_modules/
+apps/**/dist/
+packages/**/dist/
+**/tsconfig.tsbuildinfo
+**/.rollup.cache/
+*.log
+.DS_Store
+.idea/
+.vscode/
