@@ -1,6 +1,6 @@
 {
   "name": "@yd/libs",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Utility functions for YD applications",
   "main": "dist/index.cjs",
   "module": "dist/index.js",
@@ -8,9 +8,15 @@
   "files": [
     "dist"
   ],
+  "publishConfig": {
+    "registry": "http://8.138.132.251:4873/"
+  },
   "sideEffects": false,
   "scripts": {
     "build": "rollup -c"
+  },
+  "devDependencies": {
+    "tslib": "^2.6.2"
   },
   "exports": {
     ".": {

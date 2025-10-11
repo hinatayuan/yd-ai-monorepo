@@ -1,0 +1,14 @@
+{
+  "$schema": "node_modules/lerna/schemas/lerna-schema.json",
+  "version": "0.1.0",
+  "npmClient": "pnpm",
+  "packages": [
+    "packages/*",
+    "apps/*"
+  ],
+  "command": {
+    "publish": {
+      "registry": "http://8.138.132.251:4873/"
+    }
+  }
+}

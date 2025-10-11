@@ -6,3 +6,6 @@ dist
 .idea
 .next
 coverage
+
+*storybook.log
+storybook-static

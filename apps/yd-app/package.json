@@ -1,6 +1,6 @@
 {
   "name": "yd-app",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "private": true,
   "scripts": {
     "dev": "vite --host 0.0.0.0 --port 5173",
@@ -8,8 +8,9 @@
     "preview": "vite preview --host 0.0.0.0 --port 4173"
   },
   "dependencies": {
-    "@yd/hooks": "workspace:^0.0.1",
-    "@yd/libs": "workspace:^0.0.1",
+    "@yd/hooks": "workspace:*",
+    "@yd/libs": "workspace:*",
+    "@yd/ui": "workspace:*",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },

@@ -1,6 +1,6 @@
 {
   "name": "@yd/hooks",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Reusable hooks for wallet interactions built with Immer",
   "main": "dist/index.cjs",
   "module": "dist/index.js",
@@ -8,13 +8,20 @@
   "files": [
     "dist"
   ],
+  "publishConfig": {
+    "registry": "http://8.138.132.251:4873/"
+  },
   "sideEffects": false,
   "scripts": {
     "build": "rollup -c"
   },
   "dependencies": {
-    "@yd/libs": "workspace:^0.0.1",
+    "@yd/libs": "workspace:^0.1.0",
     "use-immer": "^0.9.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.2.42",
+    "tslib": "^2.6.2"
   },
   "peerDependencies": {
     "react": ">=18.2.0"
