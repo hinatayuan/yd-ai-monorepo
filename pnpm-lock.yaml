@@ -59,7 +59,7 @@ importers:
   packages/yd-hooks:
     dependencies:
       '@yd/libs':
-        specifier: workspace:^0.1.0
+        specifier: workspace:^0.1.1
         version: link:../yd-libs
       react:
         specifier: '>=18.2.0'

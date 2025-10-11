@@ -1,6 +1,6 @@
 {
   "name": "@yd/hooks",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Reusable hooks for wallet interactions built with Immer",
   "main": "dist/index.cjs",
   "module": "dist/index.js",
@@ -16,7 +16,7 @@
     "build": "rollup -c"
   },
   "dependencies": {
-    "@yd/libs": "workspace:^0.1.0",
+    "@yd/libs": "workspace:^0.1.1",
     "use-immer": "^0.9.0"
   },
   "devDependencies": {
