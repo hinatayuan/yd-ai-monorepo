@@ -1,14 +1,7 @@
 import React from "react";
-import type { Meta, StoryObj } from "@storybook/react-vite";
+import type { Meta, StoryObj } from "@storybook/react";
 
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@yd/ui";
 
 const meta: Meta<typeof Card> = {
   title: "Components/Card",
@@ -62,4 +55,3 @@ export const Default: Story = {
       ),
     ),
 };
-

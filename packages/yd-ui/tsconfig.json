@@ -62,17 +62,12 @@
     }
   },
   "include": [
-    "src/**/*",
-    "stories/**/*",
-    ".storybook/**/*",
-    "**/*.stories.*",
-    "**/*.story.*"
+    "src/**/*"
   ],
   "exclude": [
     "node_modules",
     "build",
     "dist",
-    "storybook-static",
     "**/*.test.*",
     "**/*.spec.*",
     "coverage"

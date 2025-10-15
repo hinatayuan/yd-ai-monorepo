@@ -3,7 +3,9 @@ const { fontFamily } = require("tailwindcss/defaultTheme");
 module.exports = {
   darkMode: ["class"],
   content: [
-    "./src/**/*.{js,jsx,ts,tsx,mdx}"
+    "./stories/**/*.{js,jsx,ts,tsx,mdx}",
+    "./.storybook/**/*.{js,jsx,ts,tsx,mdx}",
+    "../../packages/yd-ui/src/**/*.{js,jsx,ts,tsx,mdx}",
   ],
   theme: {
     container: {

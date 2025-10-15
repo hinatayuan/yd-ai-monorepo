@@ -23,7 +23,7 @@ export default {
     typescript({
       tsconfig: "./tsconfig.rollup.json",
       include: ["**/*.ts", "**/*.tsx"],
-      exclude: ["stories/**", ".storybook/**", "node_modules/**", "dist/**"],
+      exclude: ["node_modules/**", "dist/**"],
       compilerOptions: { declaration: false, declarationMap: false },
     }),
   ],

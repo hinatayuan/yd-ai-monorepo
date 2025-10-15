@@ -1,0 +1,15 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "types": ["node", "vite/client"],
+    "baseUrl": ".",
+    "paths": {
+      "@yd/ui": ["../../packages/yd-ui/src/index.ts"],
+      "@yd/ui/*": ["../../packages/yd-ui/src/*"]
+    }
+  },
+  "include": [
+    ".storybook/**/*",
+    "stories/**/*"
+  ]
+}

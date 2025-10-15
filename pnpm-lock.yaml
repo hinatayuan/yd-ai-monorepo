@@ -10,7 +10,7 @@ importers:
     dependencies:
       lerna:
         specifier: ^9.0.0
-        version: 9.0.0
+        version: 9.0.0(@types/node@20.19.20)
     devDependencies:
       '@rollup/plugin-typescript':
         specifier: ^11.1.5
@@ -48,13 +48,65 @@ importers:
         version: 18.3.7(@types/react@18.3.24)
       '@vitejs/plugin-react':
         specifier: ^4.2.0
-        version: 4.7.0(vite@5.4.20)
+        version: 4.7.0(vite@5.4.20(@types/node@20.19.20))
       typescript:
         specifier: ^5.3.3
         version: 5.9.2
       vite:
         specifier: ^5.0.8
-        version: 5.4.20
+        version: 5.4.20(@types/node@20.19.20)
+
+  apps/yd-storybook:
+    dependencies:
+      '@yd/ui':
+        specifier: workspace:*
+        version: link:../../packages/yd-ui
+      react:
+        specifier: ^19.1.1
+        version: 19.1.1
+      react-dom:
+        specifier: ^19.1.1
+        version: 19.1.1(react@19.1.1)
+    devDependencies:
+      '@chromatic-com/storybook':
+        specifier: ^4.1.1
+        version: 4.1.1(storybook@9.1.8(@testing-library/dom@10.4.1)(vite@5.4.20(@types/node@20.19.20)))
+      '@storybook/addon-docs':
+        specifier: ^9.1.8
+        version: 9.1.8(@types/react@19.1.14)(storybook@9.1.8(@testing-library/dom@10.4.1)(vite@5.4.20(@types/node@20.19.20)))
+      '@storybook/addon-onboarding':
+        specifier: ^9.1.8
+        version: 9.1.8(storybook@9.1.8(@testing-library/dom@10.4.1)(vite@5.4.20(@types/node@20.19.20)))
+      '@storybook/addon-themes':
+        specifier: ^9.1.8
+        version: 9.1.8(storybook@9.1.8(@testing-library/dom@10.4.1)(vite@5.4.20(@types/node@20.19.20)))
+      '@storybook/react-vite':
+        specifier: ^9.1.8
+        version: 9.1.8(react-dom@19.1.1(react@19.1.1))(react@19.1.1)(rollup@4.52.2)(storybook@9.1.8(@testing-library/dom@10.4.1)(vite@5.4.20(@types/node@20.19.20)))(typescript@5.9.2)(vite@5.4.20(@types/node@20.19.20))
+      '@types/react':
+        specifier: ^19.1.14
+        version: 19.1.14
+      '@types/react-dom':
+        specifier: ^19.1.9
+        version: 19.1.9(@types/react@19.1.14)
+      autoprefixer:
+        specifier: ^10.4.20
+        version: 10.4.21(postcss@8.5.6)
+      postcss:
+        specifier: ^8.4.49
+        version: 8.5.6
+      storybook:
+        specifier: ^9.1.8
+        version: 9.1.8(@testing-library/dom@10.4.1)(vite@5.4.20(@types/node@20.19.20))
+      tailwindcss:
+        specifier: ^3.4.17
+        version: 3.4.17
+      tailwindcss-animate:
+        specifier: ^1.0.7
+        version: 1.0.7(tailwindcss@3.4.17)
+      typescript:
+        specifier: ^5.9.2
+        version: 5.9.2
 
   packages/yd-hooks:
     dependencies:
@@ -81,6 +133,15 @@ importers:
         specifier: ^2.6.2
         version: 2.8.1
 
+  packages/yd-transform-matrix3d:
+    devDependencies:
+      '@types/node':
+        specifier: '*'
+        version: 20.19.20
+      tslib:
+        specifier: ^2.6.2
+        version: 2.8.1
+
   packages/yd-ui:
     dependencies:
       '@radix-ui/react-checkbox':
@@ -92,9 +153,6 @@ importers:
       '@radix-ui/themes':
         specifier: ^3.2.1
         version: 3.2.1(@types/react-dom@19.1.9(@types/react@19.1.14))(@types/react@19.1.14)(react-dom@19.1.1(react@19.1.1))(react@19.1.1)
-      '@storybook/addon-themes':
-        specifier: ^9.1.8
-        version: 9.1.8(storybook@9.1.8(@testing-library/dom@10.4.1)(vite@5.4.20))
       class-variance-authority:
         specifier: ^0.7.1
         version: 0.7.1
@@ -114,24 +172,12 @@ importers:
         specifier: ^3.3.1
         version: 3.3.1
     devDependencies:
-      '@chromatic-com/storybook':
-        specifier: ^4.1.1
-        version: 4.1.1(storybook@9.1.8(@testing-library/dom@10.4.1)(vite@5.4.20))
       '@rollup/plugin-node-resolve':
         specifier: ^15.2.3
         version: 15.3.1(rollup@3.29.5)
       '@rollup/plugin-typescript':
         specifier: ^11.1.5
         version: 11.1.6(rollup@3.29.5)(tslib@2.8.1)(typescript@5.9.2)
-      '@storybook/addon-docs':
-        specifier: ^9.1.8
-        version: 9.1.8(@types/react@19.1.14)(storybook@9.1.8(@testing-library/dom@10.4.1)(vite@5.4.20))
-      '@storybook/addon-onboarding':
-        specifier: ^9.1.8
-        version: 9.1.8(storybook@9.1.8(@testing-library/dom@10.4.1)(vite@5.4.20))
-      '@storybook/react-vite':
-        specifier: ^9.1.8
-        version: 9.1.8(react-dom@19.1.1(react@19.1.1))(react@19.1.1)(rollup@3.29.5)(storybook@9.1.8(@testing-library/dom@10.4.1)(vite@5.4.20))(typescript@5.9.2)(vite@5.4.20)
       '@types/react':
         specifier: ^19.1.14
         version: 19.1.14
@@ -147,9 +193,6 @@ importers:
       rollup:
         specifier: ^3.29.4
         version: 3.29.5
-      storybook:
-        specifier: ^9.1.8
-        version: 9.1.8(@testing-library/dom@10.4.1)(vite@5.4.20)
       tailwindcss:
         specifier: ^3.4.17
         version: 3.4.17
@@ -159,9 +202,6 @@ importers:
       typescript:
         specifier: ^5.9.2
         version: 5.9.2
-      vite-tsconfig-paths:
-        specifier: ^5.1.4
-        version: 5.1.4(typescript@5.9.2)(vite@5.4.20)
 
 packages:
 
@@ -1863,6 +1903,9 @@ packages:
   '@types/minimist@1.2.5':
     resolution: {integrity: sha512-hov8bUuiLiyFPGyFPE1lwWhmzYbirOXQNNo40+y3zow8aFVTeyn3VWL0VFFfdNddA8S4Vf0Tc062rzyNr7Paag==}
 
+  '@types/node@20.19.20':
+    resolution: {integrity: sha512-2Q7WS25j4pS1cS8yw3d6buNCVJukOTeQ39bAnwR6sOJbaxvyCGebzTMypDFN82CxBLnl+lSWVdCCWbRY6y9yZQ==}
+
   '@types/normalize-package-data@2.4.4':
     resolution: {integrity: sha512-37i+OaWTh9qeK4LSHPsyRC7NahnGotNuZvjLSgcPzblpHB3rrCJxAOgI5gCdKm7coonsaX1Of0ILiTcnZjbfxA==}
 
@@ -2702,9 +2745,6 @@ packages:
   glob@9.3.5:
     resolution: {integrity: sha512-e1LleDykUz2Iu+MTYdkSsuWX8lvAjAcs0Xef0lNIu0S2wOAzuTxCJtcd9S3cijlwYF18EsU3rzb8jPVobxDh9Q==}
     engines: {node: '>=16 || 14 >=14.17'}
-
-  globrex@0.1.2:
-    resolution: {integrity: sha512-uHJgbwAMwNFf5mLst7IWLNg14x1CkeqglJb/K3doi4dw6q2IvAAmM/Y81kevy83wP+Sst+nutFTYOGg3d1lsxg==}
 
   gopd@1.2.0:
     resolution: {integrity: sha512-ZUKRh6/kUFoAiTAtTYPZJ3hw9wNxx+BIBOijnlG9PnrJsCcSjs1wyyD6vJpaYtgnzDrKYRSqf3OO6Rfa93xsRg==}
@@ -4070,16 +4110,6 @@ packages:
   ts-interface-checker@0.1.13:
     resolution: {integrity: sha512-Y/arvbn+rrz3JCKl9C4kVNfTfSm2/mEp5FSz5EsZSANGPSlQrpRI5M4PKF+mJnE52jOO90PnPSc3Ur3bTQw0gA==}
 
-  tsconfck@3.1.6:
-    resolution: {integrity: sha512-ks6Vjr/jEw0P1gmOVwutM3B7fWxoWBL2KRDb1JfqGVawBmO5UsvmWOQFGHBPl5yxYz4eERr19E6L7NMv+Fej4w==}
-    engines: {node: ^18 || >=20}
-    hasBin: true
-    peerDependencies:
-      typescript: ^5.0.0
-    peerDependenciesMeta:
-      typescript:
-        optional: true
-
   tsconfig-paths@4.2.0:
     resolution: {integrity: sha512-NoZ4roiN7LnbKn9QqE1amc9DJfzvZXxF4xDavcOWt1BPkdx+m+0gJuPM+S0vCe7zTJMYUP0R8pO2XMr+Y8oLIg==}
     engines: {node: '>=6'}
@@ -4123,6 +4153,9 @@ packages:
     resolution: {integrity: sha512-v3Xu+yuwBXisp6QYTcH4UbH+xYJXqnq2m/LtQVWKWzYc1iehYnLixoQDN9FH6/j9/oybfd6W9Ghwkl8+UMKTKQ==}
     engines: {node: '>=0.8.0'}
     hasBin: true
+
+  undici-types@6.21.0:
+    resolution: {integrity: sha512-iwDZqg0QAGrg9Rav5H4n0M64c3mkR59cJ6wQp+7C4nI0gsmExaedaYLNO44eT4AtBBwjbTiGPMlt2Md0T9H9JQ==}
 
   unicorn-magic@0.1.0:
     resolution: {integrity: sha512-lRfVq8fE8gz6QMBuDM6a+LO3IAzTi05H6gCVaUpir2E1Rwpo4ZUog45KpNXKC/Mn3Yb9UDuHumeFTo9iV/D9FQ==}
@@ -4201,14 +4234,6 @@ packages:
   validate-npm-package-name@6.0.2:
     resolution: {integrity: sha512-IUoow1YUtvoBBC06dXs8bR8B9vuA3aJfmQNKMoaPG/OFsPmoQvw8xh+6Ye25Gx9DQhoEom3Pcu9MKHerm/NpUQ==}
     engines: {node: ^18.17.0 || >=20.5.0}
-
-  vite-tsconfig-paths@5.1.4:
-    resolution: {integrity: sha512-cYj0LRuLV2c2sMqhqhGpaO3LretdtMn/BVX4cPLanIZuwwrkVl+lK84E/miEXkCHWXuq65rhNN4rXsBcOB3S4w==}
-    peerDependencies:
-      vite: '*'
-    peerDependenciesMeta:
-      vite:
-        optional: true
 
   vite@5.4.20:
     resolution: {integrity: sha512-j3lYzGC3P+B5Yfy/pfKNgVEg4+UtcIJcVRt2cDjIOmhLourAqPqf8P7acgxeiSgUB7E3p2P8/3gNIgDLpwzs4g==}
@@ -4480,13 +4505,13 @@ snapshots:
       '@babel/helper-string-parser': 7.27.1
       '@babel/helper-validator-identifier': 7.27.1
 
-  '@chromatic-com/storybook@4.1.1(storybook@9.1.8(@testing-library/dom@10.4.1)(vite@5.4.20))':
+  '@chromatic-com/storybook@4.1.1(storybook@9.1.8(@testing-library/dom@10.4.1)(vite@5.4.20(@types/node@20.19.20)))':
     dependencies:
       '@neoconfetti/react': 1.0.0
       chromatic: 12.2.0
       filesize: 10.1.6
       jsonfile: 6.2.0
-      storybook: 9.1.8(@testing-library/dom@10.4.1)(vite@5.4.20)
+      storybook: 9.1.8(@testing-library/dom@10.4.1)(vite@5.4.20(@types/node@20.19.20))
       strip-ansi: 7.1.2
     transitivePeerDependencies:
       - '@chromatic-com/cypress'
@@ -4595,100 +4620,128 @@ snapshots:
 
   '@inquirer/ansi@1.0.0': {}
 
-  '@inquirer/checkbox@4.2.4':
+  '@inquirer/checkbox@4.2.4(@types/node@20.19.20)':
     dependencies:
       '@inquirer/ansi': 1.0.0
-      '@inquirer/core': 10.2.2
+      '@inquirer/core': 10.2.2(@types/node@20.19.20)
       '@inquirer/figures': 1.0.13
-      '@inquirer/type': 3.0.8
+      '@inquirer/type': 3.0.8(@types/node@20.19.20)
       yoctocolors-cjs: 2.1.3
+    optionalDependencies:
+      '@types/node': 20.19.20
 
-  '@inquirer/confirm@5.1.18':
+  '@inquirer/confirm@5.1.18(@types/node@20.19.20)':
     dependencies:
-      '@inquirer/core': 10.2.2
-      '@inquirer/type': 3.0.8
+      '@inquirer/core': 10.2.2(@types/node@20.19.20)
+      '@inquirer/type': 3.0.8(@types/node@20.19.20)
+    optionalDependencies:
+      '@types/node': 20.19.20
 
-  '@inquirer/core@10.2.2':
+  '@inquirer/core@10.2.2(@types/node@20.19.20)':
     dependencies:
       '@inquirer/ansi': 1.0.0
       '@inquirer/figures': 1.0.13
-      '@inquirer/type': 3.0.8
+      '@inquirer/type': 3.0.8(@types/node@20.19.20)
       cli-width: 4.1.0
       mute-stream: 2.0.0
       signal-exit: 4.1.0
       wrap-ansi: 6.2.0
       yoctocolors-cjs: 2.1.3
+    optionalDependencies:
+      '@types/node': 20.19.20
 
-  '@inquirer/editor@4.2.20':
+  '@inquirer/editor@4.2.20(@types/node@20.19.20)':
     dependencies:
-      '@inquirer/core': 10.2.2
-      '@inquirer/external-editor': 1.0.2
-      '@inquirer/type': 3.0.8
+      '@inquirer/core': 10.2.2(@types/node@20.19.20)
+      '@inquirer/external-editor': 1.0.2(@types/node@20.19.20)
+      '@inquirer/type': 3.0.8(@types/node@20.19.20)
+    optionalDependencies:
+      '@types/node': 20.19.20
 
-  '@inquirer/expand@4.0.20':
+  '@inquirer/expand@4.0.20(@types/node@20.19.20)':
     dependencies:
-      '@inquirer/core': 10.2.2
-      '@inquirer/type': 3.0.8
+      '@inquirer/core': 10.2.2(@types/node@20.19.20)
+      '@inquirer/type': 3.0.8(@types/node@20.19.20)
       yoctocolors-cjs: 2.1.3
+    optionalDependencies:
+      '@types/node': 20.19.20
 
-  '@inquirer/external-editor@1.0.2':
+  '@inquirer/external-editor@1.0.2(@types/node@20.19.20)':
     dependencies:
       chardet: 2.1.0
       iconv-lite: 0.7.0
+    optionalDependencies:
+      '@types/node': 20.19.20
 
   '@inquirer/figures@1.0.13': {}
 
-  '@inquirer/input@4.2.4':
+  '@inquirer/input@4.2.4(@types/node@20.19.20)':
     dependencies:
-      '@inquirer/core': 10.2.2
-      '@inquirer/type': 3.0.8
+      '@inquirer/core': 10.2.2(@types/node@20.19.20)
+      '@inquirer/type': 3.0.8(@types/node@20.19.20)
+    optionalDependencies:
+      '@types/node': 20.19.20
 
-  '@inquirer/number@3.0.20':
+  '@inquirer/number@3.0.20(@types/node@20.19.20)':
     dependencies:
-      '@inquirer/core': 10.2.2
-      '@inquirer/type': 3.0.8
+      '@inquirer/core': 10.2.2(@types/node@20.19.20)
+      '@inquirer/type': 3.0.8(@types/node@20.19.20)
+    optionalDependencies:
+      '@types/node': 20.19.20
 
-  '@inquirer/password@4.0.20':
-    dependencies:
-      '@inquirer/ansi': 1.0.0
-      '@inquirer/core': 10.2.2
-      '@inquirer/type': 3.0.8
-
-  '@inquirer/prompts@7.8.6':
-    dependencies:
-      '@inquirer/checkbox': 4.2.4
-      '@inquirer/confirm': 5.1.18
-      '@inquirer/editor': 4.2.20
-      '@inquirer/expand': 4.0.20
-      '@inquirer/input': 4.2.4
-      '@inquirer/number': 3.0.20
-      '@inquirer/password': 4.0.20
-      '@inquirer/rawlist': 4.1.8
-      '@inquirer/search': 3.1.3
-      '@inquirer/select': 4.3.4
-
-  '@inquirer/rawlist@4.1.8':
-    dependencies:
-      '@inquirer/core': 10.2.2
-      '@inquirer/type': 3.0.8
-      yoctocolors-cjs: 2.1.3
-
-  '@inquirer/search@3.1.3':
-    dependencies:
-      '@inquirer/core': 10.2.2
-      '@inquirer/figures': 1.0.13
-      '@inquirer/type': 3.0.8
-      yoctocolors-cjs: 2.1.3
-
-  '@inquirer/select@4.3.4':
+  '@inquirer/password@4.0.20(@types/node@20.19.20)':
     dependencies:
       '@inquirer/ansi': 1.0.0
-      '@inquirer/core': 10.2.2
-      '@inquirer/figures': 1.0.13
-      '@inquirer/type': 3.0.8
-      yoctocolors-cjs: 2.1.3
+      '@inquirer/core': 10.2.2(@types/node@20.19.20)
+      '@inquirer/type': 3.0.8(@types/node@20.19.20)
+    optionalDependencies:
+      '@types/node': 20.19.20
 
-  '@inquirer/type@3.0.8': {}
+  '@inquirer/prompts@7.8.6(@types/node@20.19.20)':
+    dependencies:
+      '@inquirer/checkbox': 4.2.4(@types/node@20.19.20)
+      '@inquirer/confirm': 5.1.18(@types/node@20.19.20)
+      '@inquirer/editor': 4.2.20(@types/node@20.19.20)
+      '@inquirer/expand': 4.0.20(@types/node@20.19.20)
+      '@inquirer/input': 4.2.4(@types/node@20.19.20)
+      '@inquirer/number': 3.0.20(@types/node@20.19.20)
+      '@inquirer/password': 4.0.20(@types/node@20.19.20)
+      '@inquirer/rawlist': 4.1.8(@types/node@20.19.20)
+      '@inquirer/search': 3.1.3(@types/node@20.19.20)
+      '@inquirer/select': 4.3.4(@types/node@20.19.20)
+    optionalDependencies:
+      '@types/node': 20.19.20
+
+  '@inquirer/rawlist@4.1.8(@types/node@20.19.20)':
+    dependencies:
+      '@inquirer/core': 10.2.2(@types/node@20.19.20)
+      '@inquirer/type': 3.0.8(@types/node@20.19.20)
+      yoctocolors-cjs: 2.1.3
+    optionalDependencies:
+      '@types/node': 20.19.20
+
+  '@inquirer/search@3.1.3(@types/node@20.19.20)':
+    dependencies:
+      '@inquirer/core': 10.2.2(@types/node@20.19.20)
+      '@inquirer/figures': 1.0.13
+      '@inquirer/type': 3.0.8(@types/node@20.19.20)
+      yoctocolors-cjs: 2.1.3
+    optionalDependencies:
+      '@types/node': 20.19.20
+
+  '@inquirer/select@4.3.4(@types/node@20.19.20)':
+    dependencies:
+      '@inquirer/ansi': 1.0.0
+      '@inquirer/core': 10.2.2(@types/node@20.19.20)
+      '@inquirer/figures': 1.0.13
+      '@inquirer/type': 3.0.8(@types/node@20.19.20)
+      yoctocolors-cjs: 2.1.3
+    optionalDependencies:
+      '@types/node': 20.19.20
+
+  '@inquirer/type@3.0.8(@types/node@20.19.20)':
+    optionalDependencies:
+      '@types/node': 20.19.20
 
   '@isaacs/balanced-match@4.0.1': {}
 
@@ -4719,12 +4772,12 @@ snapshots:
     dependencies:
       '@sinclair/typebox': 0.34.41
 
-  '@joshwooding/vite-plugin-react-docgen-typescript@0.6.1(typescript@5.9.2)(vite@5.4.20)':
+  '@joshwooding/vite-plugin-react-docgen-typescript@0.6.1(typescript@5.9.2)(vite@5.4.20(@types/node@20.19.20))':
     dependencies:
       glob: 10.4.5
       magic-string: 0.30.19
       react-docgen-typescript: 2.4.0(typescript@5.9.2)
-      vite: 5.4.20
+      vite: 5.4.20(@types/node@20.19.20)
     optionalDependencies:
       typescript: 5.9.2
 
@@ -4747,7 +4800,7 @@ snapshots:
       '@jridgewell/resolve-uri': 3.1.2
       '@jridgewell/sourcemap-codec': 1.5.5
 
-  '@lerna/create@9.0.0(typescript@5.9.2)':
+  '@lerna/create@9.0.0(@types/node@20.19.20)(typescript@5.9.2)':
     dependencies:
       '@npmcli/arborist': 9.1.4
       '@npmcli/package-json': 7.0.0
@@ -4774,7 +4827,7 @@ snapshots:
       has-unicode: 2.0.1
       ini: 1.3.8
       init-package-json: 8.2.2
-      inquirer: 12.9.6
+      inquirer: 12.9.6(@types/node@20.19.20)
       is-ci: 3.0.1
       is-stream: 2.0.0
       js-yaml: 4.1.0
@@ -5903,6 +5956,14 @@ snapshots:
     optionalDependencies:
       rollup: 3.29.5
 
+  '@rollup/pluginutils@5.3.0(rollup@4.52.2)':
+    dependencies:
+      '@types/estree': 1.0.8
+      estree-walker: 2.0.2
+      picomatch: 4.0.3
+    optionalDependencies:
+      rollup: 4.52.2
+
   '@rollup/rollup-android-arm-eabi@4.52.2':
     optional: true
 
@@ -6035,38 +6096,38 @@ snapshots:
 
   '@sinclair/typebox@0.34.41': {}
 
-  '@storybook/addon-docs@9.1.8(@types/react@19.1.14)(storybook@9.1.8(@testing-library/dom@10.4.1)(vite@5.4.20))':
+  '@storybook/addon-docs@9.1.8(@types/react@19.1.14)(storybook@9.1.8(@testing-library/dom@10.4.1)(vite@5.4.20(@types/node@20.19.20)))':
     dependencies:
       '@mdx-js/react': 3.1.1(@types/react@19.1.14)(react@19.1.1)
-      '@storybook/csf-plugin': 9.1.8(storybook@9.1.8(@testing-library/dom@10.4.1)(vite@5.4.20))
+      '@storybook/csf-plugin': 9.1.8(storybook@9.1.8(@testing-library/dom@10.4.1)(vite@5.4.20(@types/node@20.19.20)))
       '@storybook/icons': 1.6.0(react-dom@19.1.1(react@19.1.1))(react@19.1.1)
-      '@storybook/react-dom-shim': 9.1.8(react-dom@19.1.1(react@19.1.1))(react@19.1.1)(storybook@9.1.8(@testing-library/dom@10.4.1)(vite@5.4.20))
+      '@storybook/react-dom-shim': 9.1.8(react-dom@19.1.1(react@19.1.1))(react@19.1.1)(storybook@9.1.8(@testing-library/dom@10.4.1)(vite@5.4.20(@types/node@20.19.20)))
       react: 19.1.1
       react-dom: 19.1.1(react@19.1.1)
-      storybook: 9.1.8(@testing-library/dom@10.4.1)(vite@5.4.20)
+      storybook: 9.1.8(@testing-library/dom@10.4.1)(vite@5.4.20(@types/node@20.19.20))
       ts-dedent: 2.2.0
     transitivePeerDependencies:
       - '@types/react'
 
-  '@storybook/addon-onboarding@9.1.8(storybook@9.1.8(@testing-library/dom@10.4.1)(vite@5.4.20))':
+  '@storybook/addon-onboarding@9.1.8(storybook@9.1.8(@testing-library/dom@10.4.1)(vite@5.4.20(@types/node@20.19.20)))':
     dependencies:
-      storybook: 9.1.8(@testing-library/dom@10.4.1)(vite@5.4.20)
+      storybook: 9.1.8(@testing-library/dom@10.4.1)(vite@5.4.20(@types/node@20.19.20))
 
-  '@storybook/addon-themes@9.1.8(storybook@9.1.8(@testing-library/dom@10.4.1)(vite@5.4.20))':
+  '@storybook/addon-themes@9.1.8(storybook@9.1.8(@testing-library/dom@10.4.1)(vite@5.4.20(@types/node@20.19.20)))':
     dependencies:
-      storybook: 9.1.8(@testing-library/dom@10.4.1)(vite@5.4.20)
+      storybook: 9.1.8(@testing-library/dom@10.4.1)(vite@5.4.20(@types/node@20.19.20))
       ts-dedent: 2.2.0
 
-  '@storybook/builder-vite@9.1.8(storybook@9.1.8(@testing-library/dom@10.4.1)(vite@5.4.20))(vite@5.4.20)':
+  '@storybook/builder-vite@9.1.8(storybook@9.1.8(@testing-library/dom@10.4.1)(vite@5.4.20(@types/node@20.19.20)))(vite@5.4.20(@types/node@20.19.20))':
     dependencies:
-      '@storybook/csf-plugin': 9.1.8(storybook@9.1.8(@testing-library/dom@10.4.1)(vite@5.4.20))
-      storybook: 9.1.8(@testing-library/dom@10.4.1)(vite@5.4.20)
+      '@storybook/csf-plugin': 9.1.8(storybook@9.1.8(@testing-library/dom@10.4.1)(vite@5.4.20(@types/node@20.19.20)))
+      storybook: 9.1.8(@testing-library/dom@10.4.1)(vite@5.4.20(@types/node@20.19.20))
       ts-dedent: 2.2.0
-      vite: 5.4.20
+      vite: 5.4.20(@types/node@20.19.20)
 
-  '@storybook/csf-plugin@9.1.8(storybook@9.1.8(@testing-library/dom@10.4.1)(vite@5.4.20))':
+  '@storybook/csf-plugin@9.1.8(storybook@9.1.8(@testing-library/dom@10.4.1)(vite@5.4.20(@types/node@20.19.20)))':
     dependencies:
-      storybook: 9.1.8(@testing-library/dom@10.4.1)(vite@5.4.20)
+      storybook: 9.1.8(@testing-library/dom@10.4.1)(vite@5.4.20(@types/node@20.19.20))
       unplugin: 1.16.1
 
   '@storybook/global@5.0.0': {}
@@ -6076,39 +6137,39 @@ snapshots:
       react: 19.1.1
       react-dom: 19.1.1(react@19.1.1)
 
-  '@storybook/react-dom-shim@9.1.8(react-dom@19.1.1(react@19.1.1))(react@19.1.1)(storybook@9.1.8(@testing-library/dom@10.4.1)(vite@5.4.20))':
+  '@storybook/react-dom-shim@9.1.8(react-dom@19.1.1(react@19.1.1))(react@19.1.1)(storybook@9.1.8(@testing-library/dom@10.4.1)(vite@5.4.20(@types/node@20.19.20)))':
     dependencies:
       react: 19.1.1
       react-dom: 19.1.1(react@19.1.1)
-      storybook: 9.1.8(@testing-library/dom@10.4.1)(vite@5.4.20)
+      storybook: 9.1.8(@testing-library/dom@10.4.1)(vite@5.4.20(@types/node@20.19.20))
 
-  '@storybook/react-vite@9.1.8(react-dom@19.1.1(react@19.1.1))(react@19.1.1)(rollup@3.29.5)(storybook@9.1.8(@testing-library/dom@10.4.1)(vite@5.4.20))(typescript@5.9.2)(vite@5.4.20)':
+  '@storybook/react-vite@9.1.8(react-dom@19.1.1(react@19.1.1))(react@19.1.1)(rollup@4.52.2)(storybook@9.1.8(@testing-library/dom@10.4.1)(vite@5.4.20(@types/node@20.19.20)))(typescript@5.9.2)(vite@5.4.20(@types/node@20.19.20))':
     dependencies:
-      '@joshwooding/vite-plugin-react-docgen-typescript': 0.6.1(typescript@5.9.2)(vite@5.4.20)
-      '@rollup/pluginutils': 5.3.0(rollup@3.29.5)
-      '@storybook/builder-vite': 9.1.8(storybook@9.1.8(@testing-library/dom@10.4.1)(vite@5.4.20))(vite@5.4.20)
-      '@storybook/react': 9.1.8(react-dom@19.1.1(react@19.1.1))(react@19.1.1)(storybook@9.1.8(@testing-library/dom@10.4.1)(vite@5.4.20))(typescript@5.9.2)
+      '@joshwooding/vite-plugin-react-docgen-typescript': 0.6.1(typescript@5.9.2)(vite@5.4.20(@types/node@20.19.20))
+      '@rollup/pluginutils': 5.3.0(rollup@4.52.2)
+      '@storybook/builder-vite': 9.1.8(storybook@9.1.8(@testing-library/dom@10.4.1)(vite@5.4.20(@types/node@20.19.20)))(vite@5.4.20(@types/node@20.19.20))
+      '@storybook/react': 9.1.8(react-dom@19.1.1(react@19.1.1))(react@19.1.1)(storybook@9.1.8(@testing-library/dom@10.4.1)(vite@5.4.20(@types/node@20.19.20)))(typescript@5.9.2)
       find-up: 7.0.0
       magic-string: 0.30.19
       react: 19.1.1
       react-docgen: 8.0.1
       react-dom: 19.1.1(react@19.1.1)
       resolve: 1.22.10
-      storybook: 9.1.8(@testing-library/dom@10.4.1)(vite@5.4.20)
+      storybook: 9.1.8(@testing-library/dom@10.4.1)(vite@5.4.20(@types/node@20.19.20))
       tsconfig-paths: 4.2.0
-      vite: 5.4.20
+      vite: 5.4.20(@types/node@20.19.20)
     transitivePeerDependencies:
       - rollup
       - supports-color
       - typescript
 
-  '@storybook/react@9.1.8(react-dom@19.1.1(react@19.1.1))(react@19.1.1)(storybook@9.1.8(@testing-library/dom@10.4.1)(vite@5.4.20))(typescript@5.9.2)':
+  '@storybook/react@9.1.8(react-dom@19.1.1(react@19.1.1))(react@19.1.1)(storybook@9.1.8(@testing-library/dom@10.4.1)(vite@5.4.20(@types/node@20.19.20)))(typescript@5.9.2)':
     dependencies:
       '@storybook/global': 5.0.0
-      '@storybook/react-dom-shim': 9.1.8(react-dom@19.1.1(react@19.1.1))(react@19.1.1)(storybook@9.1.8(@testing-library/dom@10.4.1)(vite@5.4.20))
+      '@storybook/react-dom-shim': 9.1.8(react-dom@19.1.1(react@19.1.1))(react@19.1.1)(storybook@9.1.8(@testing-library/dom@10.4.1)(vite@5.4.20(@types/node@20.19.20)))
       react: 19.1.1
       react-dom: 19.1.1(react@19.1.1)
-      storybook: 9.1.8(@testing-library/dom@10.4.1)(vite@5.4.20)
+      storybook: 9.1.8(@testing-library/dom@10.4.1)(vite@5.4.20(@types/node@20.19.20))
     optionalDependencies:
       typescript: 5.9.2
 
@@ -6191,6 +6252,10 @@ snapshots:
 
   '@types/minimist@1.2.5': {}
 
+  '@types/node@20.19.20':
+    dependencies:
+      undici-types: 6.21.0
+
   '@types/normalize-package-data@2.4.4': {}
 
   '@types/prop-types@15.7.15': {}
@@ -6216,7 +6281,7 @@ snapshots:
 
   '@types/resolve@1.20.6': {}
 
-  '@vitejs/plugin-react@4.7.0(vite@5.4.20)':
+  '@vitejs/plugin-react@4.7.0(vite@5.4.20(@types/node@20.19.20))':
     dependencies:
       '@babel/core': 7.28.4
       '@babel/plugin-transform-react-jsx-self': 7.27.1(@babel/core@7.28.4)
@@ -6224,7 +6289,7 @@ snapshots:
       '@rolldown/pluginutils': 1.0.0-beta.27
       '@types/babel__core': 7.20.5
       react-refresh: 0.17.0
-      vite: 5.4.20
+      vite: 5.4.20(@types/node@20.19.20)
     transitivePeerDependencies:
       - supports-color
 
@@ -6236,13 +6301,13 @@ snapshots:
       chai: 5.3.3
       tinyrainbow: 2.0.0
 
-  '@vitest/mocker@3.2.4(vite@5.4.20)':
+  '@vitest/mocker@3.2.4(vite@5.4.20(@types/node@20.19.20))':
     dependencies:
       '@vitest/spy': 3.2.4
       estree-walker: 3.0.3
       magic-string: 0.30.19
     optionalDependencies:
-      vite: 5.4.20
+      vite: 5.4.20(@types/node@20.19.20)
 
   '@vitest/pretty-format@3.2.4':
     dependencies:
@@ -7032,8 +7097,6 @@ snapshots:
       minipass: 4.2.8
       path-scurry: 1.11.1
 
-  globrex@0.1.2: {}
-
   gopd@1.2.0: {}
 
   graceful-fs@4.2.11: {}
@@ -7144,15 +7207,17 @@ snapshots:
       validate-npm-package-license: 3.0.4
       validate-npm-package-name: 6.0.2
 
-  inquirer@12.9.6:
+  inquirer@12.9.6(@types/node@20.19.20):
     dependencies:
       '@inquirer/ansi': 1.0.0
-      '@inquirer/core': 10.2.2
-      '@inquirer/prompts': 7.8.6
-      '@inquirer/type': 3.0.8
+      '@inquirer/core': 10.2.2(@types/node@20.19.20)
+      '@inquirer/prompts': 7.8.6(@types/node@20.19.20)
+      '@inquirer/type': 3.0.8(@types/node@20.19.20)
       mute-stream: 2.0.0
       run-async: 4.0.6
       rxjs: 7.8.2
+    optionalDependencies:
+      '@types/node': 20.19.20
 
   ip-address@10.0.1: {}
 
@@ -7278,9 +7343,9 @@ snapshots:
 
   kind-of@6.0.3: {}
 
-  lerna@9.0.0:
+  lerna@9.0.0(@types/node@20.19.20):
     dependencies:
-      '@lerna/create': 9.0.0(typescript@5.9.2)
+      '@lerna/create': 9.0.0(@types/node@20.19.20)(typescript@5.9.2)
       '@npmcli/arborist': 9.1.4
       '@npmcli/package-json': 7.0.0
       '@npmcli/run-script': 10.0.0
@@ -7310,7 +7375,7 @@ snapshots:
       import-local: 3.1.0
       ini: 1.3.8
       init-package-json: 8.2.2
-      inquirer: 12.9.6
+      inquirer: 12.9.6(@types/node@20.19.20)
       is-ci: 3.0.1
       is-stream: 2.0.0
       jest-diff: 30.1.2
@@ -8442,13 +8507,13 @@ snapshots:
     dependencies:
       minipass: 7.1.2
 
-  storybook@9.1.8(@testing-library/dom@10.4.1)(vite@5.4.20):
+  storybook@9.1.8(@testing-library/dom@10.4.1)(vite@5.4.20(@types/node@20.19.20)):
     dependencies:
       '@storybook/global': 5.0.0
       '@testing-library/jest-dom': 6.8.0
       '@testing-library/user-event': 14.6.1(@testing-library/dom@10.4.1)
       '@vitest/expect': 3.2.4
-      '@vitest/mocker': 3.2.4(vite@5.4.20)
+      '@vitest/mocker': 3.2.4(vite@5.4.20(@types/node@20.19.20))
       '@vitest/spy': 3.2.4
       better-opn: 3.0.2
       esbuild: 0.21.5
@@ -8629,10 +8694,6 @@ snapshots:
 
   ts-interface-checker@0.1.13: {}
 
-  tsconfck@3.1.6(typescript@5.9.2):
-    optionalDependencies:
-      typescript: 5.9.2
-
   tsconfig-paths@4.2.0:
     dependencies:
       json5: 2.2.3
@@ -8671,6 +8732,8 @@ snapshots:
 
   uglify-js@3.19.3:
     optional: true
+
+  undici-types@6.21.0: {}
 
   unicorn-magic@0.1.0: {}
 
@@ -8734,23 +8797,13 @@ snapshots:
 
   validate-npm-package-name@6.0.2: {}
 
-  vite-tsconfig-paths@5.1.4(typescript@5.9.2)(vite@5.4.20):
-    dependencies:
-      debug: 4.4.3
-      globrex: 0.1.2
-      tsconfck: 3.1.6(typescript@5.9.2)
-    optionalDependencies:
-      vite: 5.4.20
-    transitivePeerDependencies:
-      - supports-color
-      - typescript
-
-  vite@5.4.20:
+  vite@5.4.20(@types/node@20.19.20):
     dependencies:
       esbuild: 0.21.5
       postcss: 8.5.6
       rollup: 4.52.2
     optionalDependencies:
+      '@types/node': 20.19.20
       fsevents: 2.3.3
 
   walk-up-path@4.0.0: {}

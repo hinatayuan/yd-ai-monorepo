@@ -9,11 +9,7 @@
   },
   "include": ["src/**/*"],
   "exclude": [
-    "stories",
-    ".storybook",
-    "storybook-static",
     "dist",
     "node_modules"
   ]
 }
-
